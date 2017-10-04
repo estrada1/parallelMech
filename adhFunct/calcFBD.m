@@ -9,7 +9,6 @@
 %           this separately from FBD
 function [FBD, success] = calcFBD(gripper,Fout)
     FBD = zeros(length(Fout),4); 
-    maxAdh = zeros(length(Fout),2); 
     for nn = 1:length(Fout)
         thisForce = Fout(nn,:);
         FBD(nn,:) = ( lsqnonneg(gripper.A,thisForce') )';

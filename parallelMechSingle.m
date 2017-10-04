@@ -9,7 +9,12 @@ addpath('adhFunct');         % Functions for adhesive gripper
 %% Run Genliang Simulation 
 disp('Genliang Sim')
 tic; Dynamic_animation_Sep26; toc
-Fout = [Reac1' Torq']; % Reaction force at distal joint 
+
+% Rotate into Matt's axes (rotate 180 deg) 
+Fout_Gen = [Reac1' Torq']; % Reaction force at distal joint% Rotate
+theta = pi; 
+rot_Gen2Matt = [cos(theta), sin(theta), 0;  -sin(theta), cos(theta), 0;  0, 0, 1];
+Fout = (rot_Gen2Matt*Fout_Gen')'; 
 t = (1:length(Reac1))*.01; 
 
 %% Hao Calculation of Limit Surface (if running a new design) 
@@ -54,15 +59,4 @@ ylabel('Force [N]')
 legend('Adhesive 1 Force', 'Adhesive 2 Force','Adhesive Limit');
 set(gca,'fontsize',12); hold on;
 
-%% Parsing Genliang's Sweep
-load('Reaction_Force.mat')
 
-%% Calculate Adhesive Force 
-figure
-plot(t,thisState(:,1),t,thisState(:,2),t,thisState(:,3))
-for nn = 1:tsteps
-    thisForce = thisState(nn,:)';
-    tensions(nn,:) = ( lsqnonneg(A,thisForce) )';
-end
-
-plot(t,tensions(:,1),t,tensions(:,2))

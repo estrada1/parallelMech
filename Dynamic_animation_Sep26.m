@@ -4,13 +4,15 @@ e1=[1;0]; e2=[0;1];    % unit vectors of coordinate axes
 rp0=[0;0.250];         % home position of tip-frame
 
 q0=[rp0;0];           % initial position of tip-frame
-v0=[0.25;-0.25;pi];   % initial velocity of tip-frame 
+v0=[0.25;-0.25; 0];   % initial velocity of tip-frame 
+v0=[0; 0.25; 0];   % initial velocity of tip-frame 
+
 y0=[q0;v0];           % initial state
 gre=[0.25,0.6,0.25];  % re-define the color green :-)
 
 para=parameters([]);  % load the kinematic parameters
 
-t=5;                  % simulation time
+t=2;                  % simulation time
 h=1e-2;               % step length
 n=t/h;                % number of steps 
 x(1)=0;               % initialize time

@@ -25,7 +25,7 @@ rG2=-dis2*v2; rH2=rG2+0.3*u2; Rail2=[rG2,rH2];
 % plot(Rail2(1,:),Rail2(2,:),'b','linewidth',2);
 
 %% XY stage
- bp0=p(6);
+bp0=p(6);
 rho0=p(8:9,:); 
 rE0=[q1;q2];
 rE1=rE0+e1*2.5e-3;

@@ -1,0 +1,3 @@
+function success = successEnvel(FBD,adh1,adh2,PLOT)
+
+end
